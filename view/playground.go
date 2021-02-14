@@ -58,7 +58,7 @@ func Playground(title string, endpoint string) []byte {
 	return body.Bytes()
 }
 
-func MountPlayground(c *fiber.Ctx) {
+func MountPlayground(c *fiber.Ctx) error {
 	c.Set("content-type", "text/html")
 	c.SendBytes(Playground("Something", "/query"))
 }
