@@ -1,4 +1,4 @@
-module github.com/Just4Ease/fiber-gqlgen
+module github.com/zackartz/fiber-gqlgen
 
 go 1.14
 
