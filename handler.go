@@ -123,7 +123,7 @@ func (s *Server) ServeGraphQL(api *fiber.Ctx) error {
 			"message":      "Cannot Use Request. Ensure You have provided a valid schema.",
 			"returnStatus": "NOT_OK",
 		})
-		return
+		return nil
 	}
 
 	defer func() {
@@ -132,7 +132,7 @@ func (s *Server) ServeGraphQL(api *fiber.Ctx) error {
 			resp := &graphql.Response{Errors: []*gqlerror.Error{err}}
 			api.Status(http.StatusUnprocessableEntity)
 			_ = api.JSON(resp)
-			return
+			return nil
 		}
 	}()
 
