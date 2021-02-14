@@ -109,7 +109,7 @@ type ReturnSignal struct {
 	Response   *graphql.Response
 }
 
-func (s *Server) ServeGraphQL(api *fiber.Ctx) {
+func (s *Server) ServeGraphQL(api *fiber.Ctx) error {
 	var params graphql.RawParams
 
 	b := bytes.NewReader(api.Fasthttp.PostBody())
@@ -140,5 +140,5 @@ func (s *Server) ServeGraphQL(api *fiber.Ctx) {
 	output := ProcessExecution(&params, s.exec, childContext)
 	api.Status(output.StatusCode)
 	_ = api.JSON(output.Response)
-	return
+	return nil
 }
